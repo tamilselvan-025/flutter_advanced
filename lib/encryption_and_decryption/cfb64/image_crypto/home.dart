@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -40,12 +41,28 @@ class _HomeState extends State<Home> {
                   CryptoGraph cryptoGraph = CryptoGraph();
                   File? file = await _selectFromGallery();
                   if (file != null) {
-                    imageData = await cryptoGraph.encode(file, 1);
+                    String? decryptedString = await cryptoGraph.encode(file, 1);
+                    // if(decryptedString!=null){
+                    //  imageData= base64Decode(decryptedString);
+                    // }
                     myPrint("Image data fetched !!!");
                     setState(() {});
                   }
                 },
                 child: const Text("Encode"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  String path="/data/user/0/com.example.flutter_advance/app_flutter'/images/image1";
+                  CryptoGraph cryptoGraph=CryptoGraph();
+                  String? decryptedString = cryptoGraph.decode(path);
+                  if(decryptedString!=null){
+                  imageData= base64Decode(decryptedString);
+                  }
+                  myPrint("Image decoded Successfully !!!");
+                  setState(() {});
+                },
+                child: const Text("Decode"),
               ),
               imageData != null
                   ? SizedBox(

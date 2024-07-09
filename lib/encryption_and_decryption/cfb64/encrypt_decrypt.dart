@@ -24,7 +24,7 @@
 //     final iv = IV.fromLength(16);
 //
 //     // Create an encrypter object with AES in CBC mode and PKCS7 padding
-//     final encryptor = Encrypter(AES(key,mode: AESMode.cbc,padding:"PKCS7"));
+//     final encryptor = Encrypter(AES(key,mode: AESMode.cbc_not_working,padding:"PKCS7"));
 //     myPrint("Encryptor : $encryptor");
 //
 //     // Encrypt the file content
@@ -58,7 +58,7 @@
 //     final iv = IV.fromLength(16);
 //
 //     // Create an encrypter object with AES in CBC mode and PKCS7 padding
-//     final encryptor = Encrypter(AES(key,mode: AESMode.cbc,padding: "PKCS7"));
+//     final encryptor = Encrypter(AES(key,mode: AESMode.cbc_not_working,padding: "PKCS7"));
 //
 //     // Decrypt the file content
 //     final decrypted = encryptor.decryptBytes(Encrypted(encryptedBytes), iv: iv);
