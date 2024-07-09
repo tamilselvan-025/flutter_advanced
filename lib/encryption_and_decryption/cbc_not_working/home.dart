@@ -58,20 +58,18 @@ class _HomeState extends State<Home> {
                   onPressed: () async {
                     String path = "/data/user/0/com.example.flutter_advance/app_flutter'/images/image1";
                     CryptoCBC cryptoCBC = CryptoCBC();
-                    try{
-                      dynamic value=await cryptoCBC.decrypt(path);
-                      if(value is Uint8List){
+                    try {
+                      dynamic value = await cryptoCBC.decrypt(path);
+                      if (value is Uint8List) {
                         myPrint("Value is Uint8List");
                         myPrint("value.length : ${value.length}");
-                        imageData=value;
-                        setState(() {});
+                        imageData = value;
+                        
                       }
-                    }
-                    catch(e,s){
+                    } catch (e, s) {
                       debugPrint("Error in decrypt button : $e");
                       debugPrint("StackTrace in decrypt button : $s");
                     }
-
                   },
                   child: const Text("Decode image")),
               path != null
@@ -87,7 +85,13 @@ class _HomeState extends State<Home> {
                       width: 200,
                       child: Image.memory(imageData!),
                     )
-                  : const Text("No decoded file selected")
+                  : const Text("No decoded file selected"),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                child: const Text("Set State"),
+              ),
             ],
           ),
         ),
